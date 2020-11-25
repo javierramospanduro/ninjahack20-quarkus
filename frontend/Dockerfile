@@ -1,6 +1,7 @@
-FROM nginx
+FROM php
 
-RUN sed -i 's/ 80;$/ 8080;/g' /etc/nginx/conf.d/default.conf
+WORKDIR /app
 EXPOSE 8080
 
-COPY www /usr/share/nginx/html
+COPY www /app
+CMD ["-S","0.0.0.0:8080"]
