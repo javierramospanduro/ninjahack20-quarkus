@@ -1,0 +1,7 @@
+{
+  "host": "5.56.57.18:3306",
+  "hostUser": "WEBold",
+  "hostPasswd": "Nfq123",
+  "hostDb": "skynetinn",
+  "Rol": "include"
+}

@@ -1,0 +1,28 @@
+body{
+	background-image: url('../imagenes/principal.jpg');
+}
+*{
+	font-family: 'Prompt', sans-serif;
+}
+
+#contenedorPeque{
+	margin: 0 auto;
+	width: 50%;
+	background:Gainsboro;
+	margin-top:2%;
+	box-shadow: 2px 2px 5px black;
+	border-radius: 20px;
+}
+img.LogoPeq{
+	width:15%;
+	transition:4s ease-in-out;
+	transform: rotateY(360deg);
+	transform-style: preserve-3d;
+}
+
+.titulo{
+    font-weight: bold;
+    margin-bottom: 10px;
+	padding: 20px 20px 0px 20px;
+	text-align:center;
+}
