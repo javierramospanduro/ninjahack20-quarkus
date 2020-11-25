@@ -1,10 +1,9 @@
 package org.bbva.kidsbankingapp.dao;
 
 import java.math.BigDecimal;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -37,10 +36,13 @@ public class DKidsBankingApp {
 	
 	public Padre selectPadre(String padreid) throws SQLException {
 		LOG.info("Recuperando padre:" + padreid);
-		Statement st = usersDataSource.getConnection().createStatement();
-		ResultSet rs = st.executeQuery(Queries.SELECT_PADRE);
+		PreparedStatement st = usersDataSource.getConnection().prepareStatement(Queries.SELECT_PADRE);
+		st.setString(1, padreid);
+		ResultSet rs = st.executeQuery();
 		while (rs.next()) {			
-			return padreMapper.mapFromResultSet(rs);
+			Padre res = padreMapper.mapFromResultSet(rs);
+			st.close();
+			return res;
 		}
 		LOG.info(" No data from padre : " + padreid);
 		return null;
@@ -61,7 +63,7 @@ public class DKidsBankingApp {
 	public List<Nivel> selectNiveles() {
 		return null;
 	}
-	public List<Movimiento> selectMovimientos() {
+	public List<Movimiento> selectMovimientos(String cuentaid) {
 		return null;
 	}
 	public Padre insertPadre(Padre padre) {
