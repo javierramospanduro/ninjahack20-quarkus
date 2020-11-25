@@ -1,68 +1,6 @@
 <?PHP
 
-	// ---------------------------- //
-	// Configuración de la conexión //
-	// ---------------------------- //
-	
-	// Archivo de propiedades .json
-	$propiedades     = 		file_get_contents("Config/host-properties.json"); 
-	// Se cargan los datos del json en un array
-	$jsonPropiedades = 		json_decode($propiedades, true);
-	// Se usan los datos del array $jsonPropiedades para configurar la conexión. Sirve para en caso de necesitar cambiar los datos de conexión, se cambie un único archivo, en vez de cambiar todos los archivos .php del proyecto
-	$rutaInclude     = 		$jsonPropiedades['Rol'];
-	set_include_path 		($rutaInclude);
 
-	// ----------------------------------------- //
-	// Acción ejecutada por el botón Registrarse //
-	// ------------------------------------------//
-	
-	if(isset($_REQUEST['Crear'])){
-
-		$username = $_REQUEST['Usuario'];
-		$DNI = $_REQUEST['DNI'];
-
-		$queryEmpl = "select count(*) as ExistDNI FROM t0001_User WHERE s_DNI = '". $DNI ."'" ;
-		$resultadoConsulta = mysqli_query($conexion, $queryEmpl , MYSQLI_STORE_RESULT) or die (header("Location: error.html"));
-		$fila = mysqli_fetch_array($resultadoConsulta);
-		$DNIExist= $fila['ExistDNI'];
-
-		if($DNIExist==0){
-
-			$pass = $_REQUEST['Contrasena'];
-			$passRep = $_REQUEST['RContrasena'];
-			
-			if($pass==$passRep){
-				$mailUser = $_REQUEST['mailUser'];
-				$SolicPerm = $_REQUEST['roles'];
-				
-				//aqui va la query de insercion
-				$query="Insert into t0001_User(s_User,s_Pass,s_DNI,s_MailUser,id_Rol,s_Comentario,id_SuperAdmin) VALUES ('".$username."','".md5($pass)."','".$DNI."', '".$mailUser."','".$SolicPerm ."', '".$SolicPerm."', '".$IdUSer ."')";							
-				$resultadoConsulta = mysqli_query($conexion,$query , MYSQLI_USE_RESULT) or die (header("Location: error.html")); 
-				echo '
-				<div class="alert success">
-					<span class="closebtn">&times;</span>  
-					<strong>Success!</strong> Usuario creado y puesto a la espera de confirmación por el administrador.
-				</div>			
-				';
-			}
-			else{
-			echo '
-				<div class="alert warning">
-  					<span class="closebtn">&times;</span>  
-  					<strong>Warning!</strong> Las contraseñas no coinciden.
-				</div>			
-			';
-			}
-		}else{
-			echo '
-				<div class="alert">
-  					<span class="closebtn">&times;</span>  
-  					<strong>Danger!</strong> El DNI esta en uso, comprueba el DNI antes de introducirlo.
-				</div>
-			';
-		}
-	}
-	
 ?>
 
 
