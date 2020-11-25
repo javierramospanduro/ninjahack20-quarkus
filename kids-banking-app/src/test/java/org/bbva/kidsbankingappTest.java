@@ -1,10 +1,13 @@
 package org.bbva;
 
-import io.quarkus.test.junit.QuarkusTest;
-import org.junit.jupiter.api.Test;
-
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
+
+import javax.ws.rs.core.MediaType;
+
+import org.junit.jupiter.api.Test;
+
+import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
 public class kidsbankingappTest {
@@ -12,10 +15,12 @@ public class kidsbankingappTest {
     @Test
     public void testHelloEndpoint() {
         given()
-          .when().get("/kidsbankingapp")
-          .then()
-             .statusCode(200)
-             .body(is("hello"));
+        .contentType(MediaType.APPLICATION_JSON)
+        .queryParams("user", "usuario", "password","password")
+         .when()
+         .post("/kids-banking-app/login")
+         .then()
+             .statusCode(200);
     }
 
 }

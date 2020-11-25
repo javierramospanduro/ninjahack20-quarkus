@@ -1,5 +1,6 @@
 package org.bbva.kidsbankingapp.facade;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -36,7 +37,7 @@ public class SKidsBankingApp {
     @Path("/login")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response login(@QueryParam String user,@QueryParam String password) throws ServiceException {
+    public Response login(@QueryParam String user,@QueryParam String password) throws ServiceException, SQLException {
     	business.login(user, password);
     	return Response.ok().build();
     }

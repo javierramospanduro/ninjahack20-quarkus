@@ -1,5 +1,6 @@
 package org.bbva.kidsbankingapp.business;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -13,7 +14,10 @@ import org.bbva.kidsbankingapp.dto.Movimiento;
 import org.bbva.kidsbankingapp.dto.Padre;
 import org.bbva.kidsbankingapp.dto.Producto;
 import org.bbva.kidsbankingapp.dto.Tarjeta;
+import org.bbva.kidsbankingapp.utils.Constants;
+import org.bbva.kidsbankingapp.utils.ServiceException;
 import org.jboss.logging.Logger;
+import org.jboss.resteasy.annotations.jaxrs.QueryParam;
 
 @ApplicationScoped
 public class BKidsBankingApp {
@@ -22,8 +26,25 @@ public class BKidsBankingApp {
 	@Inject
 	DKidsBankingApp dao;
 	
-	public boolean login(String user, String password) {
-		
+	public boolean login(@QueryParam("user") String user, @QueryParam("password") String password) throws ServiceException, SQLException {
+		LOG.info("Recuperando usuario");
+		Padre padre = dao.selectPadre(user);
+		if (padre!=null) {
+			if (!padre.getPassword().equals(password)) {
+				throw new ServiceException(Constants.ERROR_CONTRASENYA);
+			} else {
+				return true;
+			}
+		}
+		Hijo hijo = dao.selectHijo(user);
+		if (hijo!=null) {
+			if (!hijo.getPassword().equals(password)) {
+				throw new ServiceException(Constants.ERROR_CONTRASENYA);
+			} else {
+				return true;
+			}
+		}
+		throw new ServiceException(Constants.ERROR_USUARIO);
 	}
 	public Padre registrarPadre(Padre padre) {
 		return padre;
