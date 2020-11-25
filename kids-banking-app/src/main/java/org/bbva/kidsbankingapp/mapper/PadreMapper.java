@@ -1,4 +1,4 @@
-package org.bbva.kidsbankingapp.dto;
+package org.bbva.kidsbankingapp.mapper;
 
 
 import java.sql.Connection;
