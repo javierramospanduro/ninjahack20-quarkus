@@ -48,7 +48,7 @@ public class BKidsBankingApp {
 		}
 		throw new ServiceException(Constants.ERROR_USUARIO);
 	}
-	public Padre registrarPadre(Padre padre) throws ServiceException {
+	public Padre registrarPadre(Padre padre) throws ServiceException, SQLException {
 		if (StringUtils.isBlank(padre.getId())
 				|| StringUtils.isBlank(padre.getNombre())
 				|| StringUtils.isBlank(padre.getMail())
@@ -57,7 +57,7 @@ public class BKidsBankingApp {
 		}
 		return dao.insertPadre(padre);
 	}
-	public Hijo registrarHijo(Hijo hijo) throws ServiceException {
+	public Hijo registrarHijo(Hijo hijo) throws ServiceException, SQLException {
 		if (StringUtils.isBlank(hijo.getId())
 				|| hijo.getPadre()==null 
 				|| StringUtils.isBlank(hijo.getNombre())
@@ -74,38 +74,38 @@ public class BKidsBankingApp {
 		}
 		return dao.selectPadre(padreid);
 	}
-	public Hijo getHijo(String hijoid) throws ServiceException {
+	public Hijo getHijo(String hijoid) throws ServiceException, SQLException {
 		if (StringUtils.isBlank(hijoid)) {
 			throw new ServiceException(Constants.MANDATORY_PARAMETERS_MISSING);
 		}
 		return dao.selectHijo(hijoid);
 	}
-	public List<Cuenta> getCuentas(String hijoid,String cuentaid) throws ServiceException {
+	public List<Cuenta> getCuentas(String hijoid,String cuentaid) throws ServiceException, SQLException {
 		if (StringUtils.isBlank(hijoid)) {
 			throw new ServiceException(Constants.MANDATORY_PARAMETERS_MISSING);
 		}
 		return dao.selectCuentas(hijoid, cuentaid);
 	}
-	public List<Tarjeta> getTarjetas(String hijoid,String tarjetaid) throws ServiceException {
+	public List<Tarjeta> getTarjetas(String hijoid,String tarjetaid) throws ServiceException, SQLException {
 		if (StringUtils.isBlank(hijoid)) {
 			throw new ServiceException(Constants.MANDATORY_PARAMETERS_MISSING);
 		}
 		return dao.selectTarjetas(hijoid, tarjetaid);
 	}
-	public List<Movimiento> getMovimientosCuenta(String cuentaid) throws ServiceException {
+	public List<Movimiento> getMovimientosCuenta(String cuentaid) throws ServiceException, SQLException {
 		if (StringUtils.isBlank(cuentaid)) {
 			throw new ServiceException(Constants.MANDATORY_PARAMETERS_MISSING);
 		}
 		return dao.selectMovimientos(cuentaid);
 		
 	}
-	public List<Producto> getProductos(String nivelid) throws ServiceException {
+	public List<Producto> getProductos(String nivelid) throws ServiceException, SQLException {
 		if (StringUtils.isBlank(nivelid)) {
 			throw new ServiceException(Constants.MANDATORY_PARAMETERS_MISSING);
 		}
 		return dao.selectProductos(nivelid);
 	}
-	public Movimiento postCompra(Compra compra) throws ServiceException {
+	public Movimiento postCompra(Compra compra) throws ServiceException, SQLException {
 		// Validaciones de campos de entrada
 		if (compra.getProducto()!=null && !StringUtils.isBlank(compra.getProducto().getId())) {} else {
 			throw new ServiceException(Constants.MANDATORY_PARAMETERS_MISSING);
@@ -136,11 +136,11 @@ public class BKidsBankingApp {
 		mov.setFechaMovimiento(new Date());
 		mov.setImporte(compra.getProducto().getPrecio());
 		mov.setProducto(compra.getProducto());
-		mov.setSaldoResultante(dao.actualziarSaldo(cuen.get(0), compra.getProducto().getPrecio()).getSaldo());
+		mov.setSaldoResultante(dao.actualizarSaldoCuenta(cuen.get(0), compra.getProducto().getPrecio()).getSaldo());
 		mov.setTarjeta(compra.getTarjeta());
 		return dao.insertMovimiento(mov);
 	}
-	public Movimiento postIngreso(Movimiento movimiento) throws ServiceException {
+	public Movimiento postIngreso(Movimiento movimiento) throws ServiceException, SQLException {
 		// 
 		if (movimiento.getCuenta() != null && !StringUtils.isBlank(movimiento.getCuenta().getId())) {
 			throw new ServiceException(Constants.MANDATORY_PARAMETERS_MISSING);
@@ -149,7 +149,7 @@ public class BKidsBankingApp {
 			throw new ServiceException(Constants.MANDATORY_PARAMETERS_MISSING);
 		}
 		// Insertamos movimiento
-		movimiento.setSaldoResultante(dao.actualziarSaldo(movimiento.getCuenta(), movimiento.getImporte()).getSaldo());
+		movimiento.setSaldoResultante(dao.actualizarSaldoCuenta(movimiento.getCuenta(), movimiento.getImporte()).getSaldo());
 		dao.insertMovimiento(movimiento);		
 		return null;
 	}

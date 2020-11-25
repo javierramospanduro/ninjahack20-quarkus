@@ -1,22 +1,15 @@
 package org.bbva.kidsbankingapp.mapper;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Date;
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import org.bbva.kidsbankingapp.dto.Compra;
+
+import javax.enterprise.context.ApplicationScoped;
+
 import org.bbva.kidsbankingapp.dto.Cuenta;
 import org.bbva.kidsbankingapp.dto.Hijo;
-import org.bbva.kidsbankingapp.dto.Movimiento;
-import org.bbva.kidsbankingapp.dto.Nivel;
-import org.bbva.kidsbankingapp.dto.Padre;
-import org.bbva.kidsbankingapp.dto.Producto;
-import org.bbva.kidsbankingapp.dto.Tarjeta;
 
 @ApplicationScoped
 public class CuentaMapper {
@@ -38,13 +31,8 @@ public class CuentaMapper {
         return cnt;
 
         }
-    public PreparedStatement mapForQueryInsert (final Cuenta in, final Connection conexion) throws SQLException {
+    public PreparedStatement mapFromDto (final Cuenta in, final Connection conexion) throws SQLException {
         
-      //  final Connection conexion = DriverManager.getConnection(
-      //"j/dbc:mysql://servidor/basedatos?useServerPrepStmts=true",
-      //"usuario", "password");
-
-
 
         final PreparedStatement  psIns = conexion.prepareStatement("");
 
@@ -52,10 +40,9 @@ public class CuentaMapper {
         psIns.setString(2,in.getHijo().getId());
         psIns.setBigDecimal(3, in.getSaldo());
         psIns.setBigDecimal(4,in.getIngresoMensual());
-        psIns.setDate(5, in.getFechaAlta());
-        psIns.setDate(6, in.getFechaBaja());
+        psIns.setDate(5, new Date(in.getFechaAlta().getTime()));
+        psIns.setDate(6, new Date(in.getFechaBaja().getTime()));
         psIns.setBoolean(7,in.isActivo());
-
 
         return psIns;
 

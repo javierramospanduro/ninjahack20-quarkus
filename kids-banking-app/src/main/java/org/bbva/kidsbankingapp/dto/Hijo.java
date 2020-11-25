@@ -17,7 +17,7 @@ public class Hijo implements Serializable{
 	String mail;
 	Date fechaAlta;
 	Date fechaBaja;
-	boolean nivel;
+	Nivel nivel;
 	public Padre getPadre() {
 		return padre;
 	}
@@ -60,12 +60,6 @@ public class Hijo implements Serializable{
 	public void setFechaBaja(Date fechaBaja) {
 		this.fechaBaja = fechaBaja;
 	}
-	public boolean isNivel() {
-		return nivel;
-	}
-	public void setNivel(boolean nivel) {
-		this.nivel = nivel;
-	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -73,6 +67,12 @@ public class Hijo implements Serializable{
 	public String toString() {
 		return "Hijo [padre=" + padre + ", id=" + id + ", password=" + password + ", nombre=" + nombre + ", mail="
 				+ mail + ", fechaAlta=" + fechaAlta + ", fechaBaja=" + fechaBaja + ", nivel=" + nivel + "]";
+	}
+	public Nivel getNivel() {
+		return nivel;
+	}
+	public void setNivel(Nivel nivel) {
+		this.nivel = nivel;
 	}
 
 }
