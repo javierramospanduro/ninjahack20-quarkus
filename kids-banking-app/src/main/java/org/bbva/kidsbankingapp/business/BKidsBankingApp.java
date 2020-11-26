@@ -49,10 +49,12 @@ public class BKidsBankingApp {
 		throw new ServiceException(Constants.ERROR_USUARIO);
 	}
 	public Padre registrarPadre(Padre padre) throws ServiceException, SQLException {
+		LOG.info("Entrada business: " + padre);
 		if (StringUtils.isBlank(padre.getId())
 				|| StringUtils.isBlank(padre.getNombre())
 				|| StringUtils.isBlank(padre.getMail())
 				|| StringUtils.isBlank(padre.getPassword())) {
+			LOGGER.info("Error en campos de entrada");
 			throw new ServiceException(Constants.MANDATORY_PARAMETERS_MISSING);
 		}
 		return dao.insertPadre(padre);

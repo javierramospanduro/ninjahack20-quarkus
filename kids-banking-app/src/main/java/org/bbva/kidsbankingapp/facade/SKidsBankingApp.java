@@ -38,6 +38,7 @@ public class SKidsBankingApp {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response login(@QueryParam("userid") String user,@QueryParam("password") String password) throws ServiceException, SQLException {
+    	LOG.info("Entrando en login, user:" + user);
     	business.login(user, password);
     	return Response.ok().build();
     }
@@ -47,6 +48,7 @@ public class SKidsBankingApp {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response registrarPadre(Padre padre) throws ServiceException, SQLException {
+    	LOG.info("Alta de padre: " + padre);
     	Padre res = business.registrarPadre(padre);
     	return Response.ok(res).build();
     }
