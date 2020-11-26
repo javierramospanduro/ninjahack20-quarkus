@@ -33,6 +33,15 @@ public class SKidsBankingApp {
 	@Inject
 	BKidsBankingApp business;
 	
+	@GET
+	@Path("/test")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response test() {
+    	return Response.ok("Hello world!").build();
+    }
+
+	
     @POST
     @Path("/login")
     @Produces(MediaType.APPLICATION_JSON)
