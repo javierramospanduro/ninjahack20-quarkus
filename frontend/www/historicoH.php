@@ -23,13 +23,13 @@
 				<form action="" method="POST"> 
 					<table>
 						<tr>
-						<p>Aqui va la primera linea de movimientos realizada por ti como hijo</p>
+						<p>Ingreso de 300.000 euros en cuenta corriente</p>
 						</tr>
 						<tr>
-						<p>Aqui va la segunda linea de movimientos realizada por ti como hijo</p>
+						<p>Ingreso de 300.000 euros en cuenta corriente</p>
 						</tr>
 						<tr>
-						<p>Aqui va la tercera linea de movimientos realizada por ti como hijo</p>
+						<p>Adquisición de un chalet en la moraleja por valor de 600.000 euros</p>
 						</tr>
 					</table>
 				</form>
