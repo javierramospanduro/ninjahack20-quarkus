@@ -41,8 +41,8 @@ public class BKidsBankingApp {
 	public Hijo registrarHijo(Hijo hijo)  {
 		return Mocker.mockHijo();
 	}
-	public Padre getPadre(String padreid) {
-		return Mocker.mockPadre();
+	public Padre getPadre(String padreid) throws SQLException {
+		return dao.selectPadre(padreid);
 	}
 	public Hijo getHijo(String hijoid)  {
 		return Mocker.mockHijo();

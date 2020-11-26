@@ -78,7 +78,7 @@ public class SKidsBankingApp {
     @Path("/padres/{padreid}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response getPadre(@PathParam("padreid") String padreid)  {
+    public Response getPadre(@PathParam("padreid") String padreid) throws SQLException  {
     	LOG.info("Get padre " + padreid);
     	Padre res = business.getPadre(padreid);
     	return Response.ok(res).build();
