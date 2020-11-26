@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.enterprise.context.ApplicationScoped;
 
 import org.bbva.kidsbankingapp.dto.Cuenta;
+import org.bbva.kidsbankingapp.dto.Hijo;
 import org.bbva.kidsbankingapp.dto.Movimiento;
 import org.bbva.kidsbankingapp.dto.Producto;
 import org.bbva.kidsbankingapp.dto.Tarjeta;

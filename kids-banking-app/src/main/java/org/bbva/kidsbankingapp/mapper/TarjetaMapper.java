@@ -19,7 +19,7 @@ public class TarjetaMapper {
         trj.setId(in.getString(1));
         
         Cuenta cnt = new Cuenta();
-        hj.setId(in.getString(2));
+        trj.setId(in.getString(2));
         trj.setCuenta(cnt);
         
         Hijo hj = new Hijo();
@@ -27,7 +27,7 @@ public class TarjetaMapper {
         trj.setHijo(hj);
         trj.setFechaAlta(in.getDate(4));
         trj.setFechaBaja(in.getDate(5));
-        trj.setActivo(in.getBoolean6));
+        trj.setActivo(in.getBoolean(6));
 
         trj.setTipoTarjeta(in.getString(7));
 

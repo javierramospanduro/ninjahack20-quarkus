@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 
 import javax.enterprise.context.ApplicationScoped;
 
@@ -47,7 +46,7 @@ public class HijoMapper {
 		psIns.setString(3, in.getNombre());
 		psIns.setDate(4, new java.sql.Date(in.getFechaAlta().getTime()));
 		psIns.setDate(5, new java.sql.Date(in.getFechaBaja().getTime()));		
-		psIns.setBoolean(6, in.getActivo());
+		psIns.setBoolean(6, in.isActivo());
 		psIns.setString(7, in.getNivel().getId());
 		psIns.setString(8, in.getPassword());
 		psIns.setString(9, in.getMail());
