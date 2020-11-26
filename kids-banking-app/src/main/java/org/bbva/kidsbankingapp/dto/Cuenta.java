@@ -13,6 +13,7 @@ public class Cuenta implements Serializable{
 	 */
 	private static final long serialVersionUID = -5726268946360311573L;
 	Hijo hijo;
+	Padre padre;
 	String id;
 	BigDecimal saldo;
 	Date fechaAlta;
@@ -24,6 +25,12 @@ public class Cuenta implements Serializable{
 	}
 	public void setHijo(Hijo hijo) {
 		this.hijo = hijo;
+	}
+	public Padre getPadre() {
+		return padre;
+	}
+	public void setPadre(Padre padre) {
+		this.padre = padre;
 	}
 	public String getId() {
 		return id;

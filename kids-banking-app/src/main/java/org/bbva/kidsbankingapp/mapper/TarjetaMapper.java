@@ -17,16 +17,17 @@ public class TarjetaMapper {
     public Tarjeta mapFromResultSet (final ResultSet in) throws SQLException {
         final Tarjeta trj = new Tarjeta();
         trj.setId(in.getString(1));
-        Hijo hj = new Hijo();
-        hj.setId(in.getString(2));
-        trj.setHijo(hj);
-        trj.setFechaAlta(in.getDate(3));
-        trj.setFechaBaja(in.getDate(4));
-        trj.setActivo(in.getBoolean(5));
-
+        
         Cuenta cnt = new Cuenta();
-        hj.setId(in.getString(6));
+        hj.setId(in.getString(2));
         trj.setCuenta(cnt);
+        
+        Hijo hj = new Hijo();
+        hj.setId(in.getString(3));
+        trj.setHijo(hj);
+        trj.setFechaAlta(in.getDate(4));
+        trj.setFechaBaja(in.getDate(5));
+        trj.setActivo(in.getBoolean6));
 
         trj.setTipoTarjeta(in.getString(7));
 
@@ -44,11 +45,13 @@ public class TarjetaMapper {
         final PreparedStatement  psIns = conexion.prepareStatement("");
 
         psIns.setString(1,in.getId());
-        psIns.setString(2,in.getHijo().getId());
-        psIns.setDate(3, new java.sql.Date(in.getFechaAlta().getTime()));
-        psIns.setDate(4, new java.sql.Date(in.getFechaBaja().getTime()));
-        psIns.setBoolean(5, in.isActivo());
-        psIns.setString(6,in.getCuenta().getId());
+        psIns.setString(2,in.getCuenta().getId());
+        psIns.setString(3,in.getHijo().getId());
+        
+        psIns.setDate(4, new java.sql.Date(in.getFechaAlta().getTime()));
+        psIns.setDate(5, new java.sql.Date(in.getFechaBaja().getTime()));
+        psIns.setBoolean(6, in.isActivo());
+
         psIns.setString(7,in.getTipoTarjeta());
 
         return psIns;

@@ -11,6 +11,7 @@ public class Movimiento implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -4682999169608332513L;
+	String id;
 	Cuenta cuenta;
 	Tarjeta tarjeta;
 	Date fechaMovimiento;
@@ -18,6 +19,13 @@ public class Movimiento implements Serializable{
 	BigDecimal saldoResultante;
 	String descripcion;
 	Producto producto;
+	Hijo hijo;
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public Cuenta getCuenta() {
 		return cuenta;
 	}
@@ -59,6 +67,12 @@ public class Movimiento implements Serializable{
 	}
 	public void setProducto(Producto producto) {
 		this.producto = producto;
+	}
+	public Hijo getHijo() {
+		return hijo;
+	}
+	public void setHijo(Hijo hijo) {
+		this.hijo = hijo;
 	}
 	@Override
 	public String toString() {

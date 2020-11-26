@@ -27,11 +27,11 @@ public class PadreMapper {
 		final Padre padreOut = new Padre();
 		padreOut.setId(in.getString(1));
 		padreOut.setNombre(in.getString(2));
-		padreOut.setMail(in.getString(3));
-		padreOut.setPassword(in.getString(4));
-		padreOut.setFechaAlta(in.getDate(5));
-		padreOut.setFechaBaja(in.getDate(6));
-		padreOut.setActivo(in.getBoolean(7));
+		padreOut.setFechaAlta(in.getDate(3));
+		padreOut.setFechaBaja(in.getDate(4));		
+		padreOut.setActivo(in.getBoolean(5));		
+		padreOut.setPassword(in.getString(6));
+		padreOut.setMail(in.getString(7));
 
 		return padreOut;
 
@@ -43,11 +43,12 @@ public class PadreMapper {
 
 		psIns.setString(1, in.getId());
 		psIns.setString(2, in.getNombre());
-		psIns.setString(3, in.getMail());
-		psIns.setString(4, in.getPassword());
-		psIns.setDate(5, (Date) in.getFechaAlta());
-		psIns.setDate(6, (Date) in.getFechaBaja());
-		psIns.setBoolean(7, in.isActivo());
+		psIns.setDate(3, (Date) in.getFechaAlta());
+		psIns.setDate(4, (Date) in.getFechaBaja());
+
+		psIns.setBoolean(5, in.isActivo());	
+		psIns.setString(6, in.getPassword());		
+		psIns.setString(7, in.getMail());
 
 		return psIns;
 
