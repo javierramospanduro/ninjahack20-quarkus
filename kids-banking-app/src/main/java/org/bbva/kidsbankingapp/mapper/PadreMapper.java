@@ -20,13 +20,13 @@ public class PadreMapper {
 	public Padre mapFromResultSet(final ResultSet in) throws SQLException {
 		final Padre padreOut = new Padre();
 		
-		padreOut.setId(in.getString(1));
-		padreOut.setNombre(in.getString(2));
+		padreOut.setId(in.getString(1).strip());
+		padreOut.setNombre(in.getString(2).strip());
 		padreOut.setFechaAlta(in.getDate(3));
 		padreOut.setFechaBaja(in.getDate(4));		
 		padreOut.setActivo(in.getBoolean(5));		
-		padreOut.setPassword(in.getString(6));
-		padreOut.setMail(in.getString(7));
+		padreOut.setPassword(in.getString(6).strip());
+		padreOut.setMail(in.getString(7).strip());
 		LOG.info("Padre mapped: " + padreOut);
 		return padreOut;
 
