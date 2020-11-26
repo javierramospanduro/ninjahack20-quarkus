@@ -18,7 +18,7 @@ public class Hijo implements Serializable{
 	Date fechaAlta;
 	Date fechaBaja;
 	Nivel nivel;
-	String activo;
+	boolean activo;
 	
 	public Padre getPadre() {
 		return padre;
@@ -65,10 +65,10 @@ public class Hijo implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	public String getActivo() {
+	public boolean getActivo() {
 		return activo;
 	}
-	public void setActivo(String activo) {
+	public void setActivo(boolean activo) {
 		this.activo = activo;
 	
 	@Override
