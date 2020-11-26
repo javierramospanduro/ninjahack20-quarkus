@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.json.bind.annotation.JsonbDateFormat;
+
 import io.quarkus.runtime.annotations.RegisterForReflection;
 
 @RegisterForReflection
@@ -16,7 +18,9 @@ public class Cuenta implements Serializable{
 	Padre padre;
 	String id;
 	BigDecimal saldo;
+	@JsonbDateFormat(JsonbDateFormat.TIME_IN_MILLIS)
 	Date fechaAlta;
+	@JsonbDateFormat(JsonbDateFormat.TIME_IN_MILLIS)
 	Date fechaBaja;
 	BigDecimal ingresoMensual;
 	boolean activo;

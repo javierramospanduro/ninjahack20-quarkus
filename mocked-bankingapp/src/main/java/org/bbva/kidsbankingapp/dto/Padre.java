@@ -3,29 +3,24 @@ package org.bbva.kidsbankingapp.dto;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.json.bind.annotation.JsonbDateFormat;
+
 import io.quarkus.runtime.annotations.RegisterForReflection;
 @RegisterForReflection
-public class Hijo implements Serializable{
+public class Padre implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 87702167043566000L;
-	Padre padre;
+	private static final long serialVersionUID = 2171209386088295368L;
 	String id;
 	String password;
-	String nombre;
 	String mail;
+	String nombre;
+	@JsonbDateFormat(JsonbDateFormat.TIME_IN_MILLIS)
 	Date fechaAlta;
+	@JsonbDateFormat(JsonbDateFormat.TIME_IN_MILLIS)
 	Date fechaBaja;
-	Nivel nivel;
 	boolean activo;
-	
-	public Padre getPadre() {
-		return padre;
-	}
-	public void setPadre(Padre padre) {
-		this.padre = padre;
-	}
 	public String getId() {
 		return id;
 	}
@@ -38,17 +33,17 @@ public class Hijo implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
 	public String getMail() {
 		return mail;
 	}
 	public void setMail(String mail) {
 		this.mail = mail;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	public Date getFechaAlta() {
 		return fechaAlta;
@@ -62,30 +57,16 @@ public class Hijo implements Serializable{
 	public void setFechaBaja(Date fechaBaja) {
 		this.fechaBaja = fechaBaja;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	public boolean getActivo() {
-		return activo;
-	}	
-	@Override
-	public String toString() {
-		return "Hijo [padre=" + padre + ", id=" + id + ", password=" + password + ", nombre=" + nombre + ", mail="
-				+ mail + ", fechaAlta=" + fechaAlta + ", fechaBaja=" + fechaBaja + ", nivel=" + nivel + ", activo="
-				+ activo + "]";
-	}
-	public Nivel getNivel() {
-		return nivel;
-	}
-	public void setNivel(Nivel nivel) {
-		this.nivel = nivel;
-	}
 	public boolean isActivo() {
 		return activo;
 	}
 	public void setActivo(boolean activo) {
 		this.activo = activo;
+	}
+	@Override
+	public String toString() {
+		return "Padre [id=" + id + ", password=" + password + ", mail=" + mail + ", nombre=" + nombre + ", fechaAlta="
+				+ fechaAlta + ", fechaBaja=" + fechaBaja + ", activo=" + activo + "]";
 	}
 
 }

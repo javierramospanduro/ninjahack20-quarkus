@@ -18,13 +18,14 @@ public class ProductoMapper {
         final Producto prd = new Producto();
         prd.setId(in.getString(1));
         prd.setDescripcion(in.getString(2));
+        prd.setPrecio(in.getBigDecimal(3));     
+        
         Nivel nv = new Nivel();
-        nv.setId(in.getString(3));
+        nv.setId(in.getString(4));
         prd.setNivel(nv);
-        prd.setPrecio(in.getBigDecimal(4));
-        prd.setFechaAlta(in.getDate(5));
-        prd.setFechaBaja(in.getDate(6));
-        prd.setActivo(in.getBoolean(7));
+        prd.setActivo(in.getBoolean(5));
+        prd.setFechaAlta(in.getDate(6));
+        prd.setFechaBaja(in.getDate(7));
 
         return prd;
 
@@ -41,11 +42,11 @@ public class ProductoMapper {
 
         psIns.setString(1,in.getId());
         psIns.setString(2,in.getDescripcion());
-        psIns.setString(3,in.getNivel().getId());
-        psIns.setBigDecimal(4,in.getPrecio());
-        psIns.setDate(5, new java.sql.Date(in.getFechaAlta().getTime()));
-        psIns.setDate(6, new java.sql.Date(in.getFechaBaja().getTime()));
-        psIns.setBoolean(7, in.isActivo());
+        psIns.setBigDecimal(3,in.getPrecio());
+        psIns.setString(4,in.getNivel().getId());
+        psIns.setBoolean(5, in.isActivo());
+        psIns.setDate(6, new java.sql.Date(in.getFechaAlta().getTime()));
+        psIns.setDate(7, new java.sql.Date(in.getFechaBaja().getTime()));
 
         return psIns;
 

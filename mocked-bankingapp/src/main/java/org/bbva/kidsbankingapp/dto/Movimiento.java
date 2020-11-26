@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.json.bind.annotation.JsonbDateFormat;
+
 import io.quarkus.runtime.annotations.RegisterForReflection;
 @RegisterForReflection
 public class Movimiento implements Serializable{
@@ -14,6 +16,7 @@ public class Movimiento implements Serializable{
 	String id;
 	Cuenta cuenta;
 	Tarjeta tarjeta;
+	@JsonbDateFormat(JsonbDateFormat.TIME_IN_MILLIS)
 	Date fechaMovimiento;
 	BigDecimal importe;
 	BigDecimal saldoResultante;

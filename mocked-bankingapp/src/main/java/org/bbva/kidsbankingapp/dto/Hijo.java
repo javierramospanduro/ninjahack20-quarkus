@@ -3,6 +3,8 @@ package org.bbva.kidsbankingapp.dto;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.json.bind.annotation.JsonbDateFormat;
+
 import io.quarkus.runtime.annotations.RegisterForReflection;
 @RegisterForReflection
 public class Hijo implements Serializable{
@@ -15,7 +17,9 @@ public class Hijo implements Serializable{
 	String password;
 	String nombre;
 	String mail;
+	@JsonbDateFormat(JsonbDateFormat.TIME_IN_MILLIS)
 	Date fechaAlta;
+	@JsonbDateFormat(JsonbDateFormat.TIME_IN_MILLIS)
 	Date fechaBaja;
 	Nivel nivel;
 	boolean activo;

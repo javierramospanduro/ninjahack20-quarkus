@@ -19,15 +19,14 @@ public class PadreMapper {
 	
 	public Padre mapFromResultSet(final ResultSet in) throws SQLException {
 		final Padre padreOut = new Padre();
-		
-		padreOut.setId(in.getString(1).trim());
-		padreOut.setNombre(in.getString(2).trim());
+		LOG.info("Getting resultset: " + in);
+		padreOut.setId(in.getString(1));
+		padreOut.setNombre(in.getString(2));
 		padreOut.setFechaAlta(in.getDate(3));
 		padreOut.setFechaBaja(in.getDate(4));		
 		padreOut.setActivo(in.getBoolean(5));		
-		padreOut.setPassword(in.getString(6).trim());
-		padreOut.setMail(in.getString(7).trim());
-		LOG.info("Padre mapped: " + padreOut);
+		padreOut.setPassword(in.getString(6));
+		padreOut.setMail(in.getString(7));
 		return padreOut;
 
 	}
@@ -38,8 +37,14 @@ public class PadreMapper {
 
 		psIns.setString(1, in.getId());
 		psIns.setString(2, in.getNombre());
-		psIns.setDate(3, new java.sql.Date(in.getFechaAlta().getTime()));
-		psIns.setDate(4, new java.sql.Date(in.getFechaBaja().getTime()));
+		if (in.getFechaAlta()!=null) {
+			psIns.setDate(3, new java.sql.Date(in.getFechaAlta().getTime()));
+		}
+		if (in.getFechaBaja()!=null) {
+			psIns.setDate(4, new java.sql.Date(in.getFechaBaja().getTime()));
+		} else {
+			psIns.setDate(4, null);
+		}
 		psIns.setBoolean(5, in.isActivo());	
 		psIns.setString(6, in.getPassword());		
 		psIns.setString(7, in.getMail());
