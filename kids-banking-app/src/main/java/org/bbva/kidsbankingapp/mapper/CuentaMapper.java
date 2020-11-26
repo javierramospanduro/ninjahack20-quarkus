@@ -10,6 +10,7 @@ import javax.enterprise.context.ApplicationScoped;
 
 import org.bbva.kidsbankingapp.dto.Cuenta;
 import org.bbva.kidsbankingapp.dto.Hijo;
+import org.bbva.kidsbankingapp.dto.Padre;
 
 @ApplicationScoped
 public class CuentaMapper {

@@ -65,6 +65,7 @@ public class Hijo implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
 	public boolean getActivo() {
 		return activo;
 	}
@@ -81,6 +82,12 @@ public class Hijo implements Serializable{
 	}
 	public void setNivel(Nivel nivel) {
 		this.nivel = nivel;
+	}
+	public boolean isActivo() {
+		return activo;
+	}
+	public void setActivo(boolean activo) {
+		this.activo = activo;
 	}
 
 }
