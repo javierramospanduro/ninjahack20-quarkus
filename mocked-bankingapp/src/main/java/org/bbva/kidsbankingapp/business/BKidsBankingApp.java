@@ -1,5 +1,6 @@
 package org.bbva.kidsbankingapp.business;
 
+import java.util.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,7 @@ public class BKidsBankingApp {
 		return true;
 	}
 	public Padre registrarPadre(Padre padre) throws SQLException  {
+		padre.setFechaAlta(new Date());
 		return dao.insertPadre(padre);
 	}
 	public Hijo registrarHijo(Hijo hijo)  {

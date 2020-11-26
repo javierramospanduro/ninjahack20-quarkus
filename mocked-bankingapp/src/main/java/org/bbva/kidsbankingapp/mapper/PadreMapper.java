@@ -37,8 +37,12 @@ public class PadreMapper {
 
 		psIns.setString(1, in.getId());
 		psIns.setString(2, in.getNombre());
-		psIns.setDate(3, new java.sql.Date(in.getFechaAlta().getTime()));
-		psIns.setDate(4, new java.sql.Date(in.getFechaBaja().getTime()));
+		if (in.getFechaAlta()!=null) {
+			psIns.setDate(3, new java.sql.Date(in.getFechaAlta().getTime()));
+		}
+		if (in.getFechaBaja()!=null) {
+			psIns.setDate(4, new java.sql.Date(in.getFechaBaja().getTime()));
+		}
 		psIns.setBoolean(5, in.isActivo());	
 		psIns.setString(6, in.getPassword());		
 		psIns.setString(7, in.getMail());
