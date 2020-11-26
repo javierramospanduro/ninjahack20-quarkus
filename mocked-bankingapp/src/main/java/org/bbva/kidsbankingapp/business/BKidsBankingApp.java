@@ -1,8 +1,8 @@
 package org.bbva.kidsbankingapp.business;
 
-import java.util.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -25,8 +25,14 @@ public class BKidsBankingApp {
 	@Inject
 	DKidsBankingApp dao;
 	
-	public boolean login(String user,String password)  {
-		return true;
+	public boolean login(String user,String password) throws SQLException  {
+		Padre padre = dao.selectPadre(user);
+		if (padre!=null) {
+			if (padre.getPassword().equals(password)) {
+				return true;
+			}
+		}		
+		return false;
 	}
 	public Padre registrarPadre(Padre padre) throws SQLException  {
 		padre.setFechaAlta(new Date());

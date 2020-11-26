@@ -24,7 +24,7 @@ public class BKidsBankingAppTest {
           .queryParam("userid", "pepito","password","password")
           .when().get("/mocked/kidsbanking-app/login")          
           .then()
-             .statusCode(200);
+             .statusCode(500);
     }
     @Test
     public void registrarPadre() {

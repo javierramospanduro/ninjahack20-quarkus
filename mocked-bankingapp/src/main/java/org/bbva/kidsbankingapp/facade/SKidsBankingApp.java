@@ -46,10 +46,14 @@ public class SKidsBankingApp {
     @Path("/login")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response login(@QueryParam("userid") String user,@QueryParam("password") String password) {
-    	LOG.info("Entrando en login, user:" + user);
-    	business.login(user, password);
-    	return Response.ok().build();
+    public Response login(@QueryParam("userid") String user,@QueryParam("password") String password) throws SQLException {
+    	LOG.info("Entrando en login, user:" + user);    	
+    	if (business.login(user, password)) {
+    		LOG.info("Log ok");
+    		return Response.ok().build();
+    	} 
+    	LOG.info("Log error");
+    	return Response.serverError().build();    		
     }
     
     @POST
