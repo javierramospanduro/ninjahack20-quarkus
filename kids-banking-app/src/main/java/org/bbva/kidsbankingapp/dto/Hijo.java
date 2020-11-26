@@ -68,14 +68,12 @@ public class Hijo implements Serializable{
 
 	public boolean getActivo() {
 		return activo;
-	}
-	public void setActivo(boolean activo) {
-		this.activo = activo;
-	
+	}	
 	@Override
 	public String toString() {
 		return "Hijo [padre=" + padre + ", id=" + id + ", password=" + password + ", nombre=" + nombre + ", mail="
-				+ mail + ", fechaAlta=" + fechaAlta + ", fechaBaja=" + fechaBaja + ", nivel=" + nivel + "]";
+				+ mail + ", fechaAlta=" + fechaAlta + ", fechaBaja=" + fechaBaja + ", nivel=" + nivel + ", activo="
+				+ activo + "]";
 	}
 	public Nivel getNivel() {
 		return nivel;
