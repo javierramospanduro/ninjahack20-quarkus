@@ -54,7 +54,7 @@ public class BKidsBankingAppTest {
         .contentType(MediaType.APPLICATION_JSON)        
         .when().get("/mocked/kidsbanking-app/padres/geppeto")          
         .then()
-           .statusCode(200);
+           .statusCode(500);
     }
     @Test
     public void getHijo()  {
