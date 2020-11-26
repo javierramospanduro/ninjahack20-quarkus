@@ -20,7 +20,7 @@
 					<table id="TablaProductos">
 						<tr>
 						<td>
-						<img class="ImgTienda" src=".\imagenes\zapatilla.png" />
+						<img class="ImgTienda" src=".\imagenes\Zapatilla.png" />
 						<p>Zapatillas adidas</p>
 						<p>30€</p>
 						<input id="imgEdit" type="image" src=".\imagenes\activar.png" alt="Smiley face">Comprar

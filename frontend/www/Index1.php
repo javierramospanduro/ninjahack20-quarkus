@@ -22,8 +22,8 @@
 						<p class = "acceso">Login</p>
 						<input id = "DNIUsuario" type = "text" name = "DNIuser" placeholder = "DNI de Usuario" onfocus = "this.placeholder = \'\'" onblur = "this.placeholder =\'DNI del Usuario\'"><br><br>
 						<input id = "contraUsuario" type = "password" name = "password" minlength="8" placeholder = "Contraseña" onfocus = "this.placeholder = \'\'" onblur = "this.placeholder =\'Contraseña\'" required> <br><br>
-						<input type="submit" name = "login" value="Acceso Padre" style="width: 100%;" onclick="location.href=`./HistoricoP.php`;">
-						<input type="submit" name = "login" value="Acceso Hijo" style="width: 100%;" onclick="location.href=`./HistoricoH.php`;">
+						<input type="submit" name = "login" value="Acceso Padre" style="width: 100%;" onclick="location.href=`./historicoP.php`;">
+						<input type="submit" name = "login" value="Acceso Hijo" style="width: 100%;" onclick="location.href=`./historicoH.php`;">
 						<p class="NewUser"> <a href="./RegistroP.php">*Registrate si no lo estas </a></p>
 					</div>
 				</form>
