@@ -37,7 +37,7 @@ public class SKidsBankingApp {
     @Path("/login")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response login(@QueryParam("padreid") String user,@QueryParam("password") String password) throws ServiceException, SQLException {
+    public Response login(@QueryParam("userid") String user,@QueryParam("password") String password) throws ServiceException, SQLException {
     	business.login(user, password);
     	return Response.ok().build();
     }
@@ -65,7 +65,7 @@ public class SKidsBankingApp {
     @Path("/padres/{padreid}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response getPadre(@PathParam String padreid) throws ServiceException, SQLException {
+    public Response getPadre(@PathParam("padreid") String padreid) throws ServiceException, SQLException {
     	Padre res = business.getPadre(padreid);
     	return Response.ok(res).build();
     }
@@ -73,7 +73,7 @@ public class SKidsBankingApp {
     @Path("/padres/{padreid}/hijos/{hijoid}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response getHijo(@PathParam String padreid,@PathParam String hijoid) throws ServiceException, SQLException {
+    public Response getHijo(@PathParam("padreid") String padreid,@PathParam("hijoid") String hijoid) throws ServiceException, SQLException {
     	Hijo res = business.getHijo(hijoid);
     	if (!hijoid.equals(res.getId())) {
     		throw new  ServiceException("id padre no concuerda");
@@ -84,7 +84,7 @@ public class SKidsBankingApp {
     @Path("/padres/{padreid}/hijos/{hijoid}/cuentas")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response getCuentas(@PathParam String padreid,@PathParam String hijoid,@QueryParam String cuentaid) throws ServiceException, SQLException {
+    public Response getCuentas(@PathParam("padreid") String padreid,@PathParam("hijoid") String hijoid,@QueryParam("cuentaid") String cuentaid) throws ServiceException, SQLException {
     	List<Cuenta> res = business.getCuentas(hijoid, cuentaid);
     	return Response.ok(res).build();
     }
@@ -92,7 +92,7 @@ public class SKidsBankingApp {
     @Path("/padres/{padreid}/hijos/{hijoid}/tarjetas")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response getTarjetas(@PathParam String padreid,@PathParam String hijoid,@QueryParam String tarjetaid) throws ServiceException, SQLException {
+    public Response getTarjetas(@PathParam("padreid") String padreid,@PathParam("hijoid") String hijoid,@QueryParam("tarjetaid") String tarjetaid) throws ServiceException, SQLException {
     	List<Tarjeta> res = business.getTarjetas(hijoid, tarjetaid);
     	return Response.ok(res).build();
     }
@@ -101,7 +101,7 @@ public class SKidsBankingApp {
     @Path("/padres/{padreid}/hijos/{hijoid}/cuentas/{cuentaid}/movimientos")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response getMovimientos(@PathParam String padreid,@PathParam String hijoid,@PathParam String cuentaid) throws ServiceException, SQLException {
+    public Response getMovimientos(@PathParam("padreid") String padreid,@PathParam("hijoid") String hijoid,@PathParam("cuentaid") String cuentaid) throws ServiceException, SQLException {
     	List<Movimiento> res = business.getMovimientosCuenta(cuentaid);
     	return Response.ok(res).build();
     }
@@ -109,7 +109,7 @@ public class SKidsBankingApp {
     @Path("/productos")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response getMovimientos(@QueryParam String nivelid) throws ServiceException, SQLException {
+    public Response getMovimientos(@QueryParam("nivelid") String nivelid) throws ServiceException, SQLException {
     	List<Producto> res = business.getProductos(nivelid);
     	return Response.ok(res).build();
     }
@@ -117,7 +117,7 @@ public class SKidsBankingApp {
     @Path("/padres/{padreid}/hijos/{hijoid}/cuentas/{cuentaid}/movimientos/compras")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response getMovimientos(@PathParam String padreid,@PathParam String hijoid,@PathParam String cuentaid,Compra compra) throws ServiceException, SQLException {
+    public Response getMovimientos(@PathParam("padreid") String padreid,@PathParam("hijoid") String hijoid,@PathParam("cuentaid") String cuentaid,Compra compra) throws ServiceException, SQLException {
     	Movimiento res = business.postCompra(compra);
     	return Response.ok(res).build();
     }
@@ -125,7 +125,7 @@ public class SKidsBankingApp {
     @Path("/padres/{padreid}/hijos/{hijoid}/cuentas/{cuentaid}/movimientos/ingreso")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response getMovimientos(@PathParam String padreid,@PathParam String hijoid,@PathParam String cuentaid,Movimiento ingreso) throws ServiceException, SQLException {
+    public Response getMovimientos(@PathParam("padreid") String padreid,@PathParam("hijoid") String hijoid,@PathParam String cuentaid,Movimiento ingreso) throws ServiceException, SQLException {
     	Movimiento res = business.postIngreso(ingreso);
     	return Response.ok(res).build();
     }    
