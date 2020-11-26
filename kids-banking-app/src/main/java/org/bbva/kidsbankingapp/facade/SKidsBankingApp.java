@@ -37,7 +37,7 @@ public class SKidsBankingApp {
     @Path("/login")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response login(@QueryParam String user,@QueryParam String password) throws ServiceException, SQLException {
+    public Response login(@QueryParam("padreid") String user,@QueryParam("password") String password) throws ServiceException, SQLException {
     	business.login(user, password);
     	return Response.ok().build();
     }
