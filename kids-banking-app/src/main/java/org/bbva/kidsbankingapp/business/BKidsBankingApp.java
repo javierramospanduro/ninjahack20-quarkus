@@ -54,7 +54,7 @@ public class BKidsBankingApp {
 				|| StringUtils.isBlank(padre.getNombre())
 				|| StringUtils.isBlank(padre.getMail())
 				|| StringUtils.isBlank(padre.getPassword())) {
-			LOGGER.info("Error en campos de entrada");
+			LOG.info("Error en campos de entrada");
 			throw new ServiceException(Constants.MANDATORY_PARAMETERS_MISSING);
 		}
 		return dao.insertPadre(padre);
