@@ -16,7 +16,7 @@ import io.quarkus.test.junit.QuarkusTest;
 public class kidsbankingappTest {
 
     @Test
-    public void testHelloEndpoint() {
+    public void testLogin() {
         given()
         .contentType(MediaType.APPLICATION_JSON)
         .queryParams("user", "padre1", "password","password")
@@ -25,5 +25,32 @@ public class kidsbankingappTest {
          .then()
              .statusCode(200);
     }
-
+    @Test
+    public void testLoginKO() {
+        given()
+        .contentType(MediaType.APPLICATION_JSON)
+        .queryParams("user", "patata", "password","pascual")
+         .when()
+         .post("/kids-banking-app/login")
+         .then()
+             .statusCode(500);
+    }
+    @Test
+    public void testGetPadres() {
+        given()
+        .contentType(MediaType.APPLICATION_JSON)
+        .when()
+        .get("/kids-banking-app/padres/12345")
+        .then()
+             .statusCode(200);
+    }
+    @Test
+    public void testGetPadresNoExiste() {
+        given()
+        .contentType(MediaType.APPLICATION_JSON)
+        .when()
+        .get("/kids-banking-app/padres/adfaf")
+        .then()
+             .statusCode(204);
+    }
 }
