@@ -42,6 +42,8 @@ public class PadreMapper {
 		}
 		if (in.getFechaBaja()!=null) {
 			psIns.setDate(4, new java.sql.Date(in.getFechaBaja().getTime()));
+		} else {
+			psIns.setDate(4, null);
 		}
 		psIns.setBoolean(5, in.isActivo());	
 		psIns.setString(6, in.getPassword());		
