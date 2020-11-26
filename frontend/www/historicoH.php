@@ -16,7 +16,7 @@
 			<input id="imgEdit" type="image" src=".\imagenes\Back01.png" alt="Smiley face">Atras
 		</form>
 		<form id="shop" name="shop" method="post" action="./tienda.php">
-			<input id="imgEdit2" type="image" src=".\imagenes\tienda.png" alt="Smiley face">
+			<input id="imgEdit2" type="image" src=".\imagenes\Tienda.png" alt="Smiley face">
 		</form>
 				<div id ="Cuerpo">
 
