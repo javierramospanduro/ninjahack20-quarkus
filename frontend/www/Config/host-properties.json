@@ -1,6 +1,0 @@
-{
-  "host": "http://database",
-  "hostUser": "postgresql",
-  "hostPasswd": "pass",
-  "hostDb": "postgresql"
-}
