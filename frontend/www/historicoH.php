@@ -15,6 +15,10 @@
 		<form id="back" name="back" method="post" action="./Index1.php">
 			<input id="imgEdit" type="image" src=".\imagenes\Back01.png" alt="Smiley face">Atras
 		</form>
+		
+		<input type="submit" name = "login" value="Cuentas" style="width: 100%;" onclick="location.href=`./cuentas.php`;">
+		<input type="submit" name = "login" value="Tarjetas" style="width: 100%;" onclick="location.href=`./tarjetas.php`;">
+		
 		<form id="shop" name="shop" method="post" action="./tienda.php">
 			<input id="imgEdit2" type="image" src=".\imagenes\Tienda.png" alt="Smiley face">
 		</form>
