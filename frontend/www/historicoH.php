@@ -15,6 +15,10 @@
 		<form id="back" name="back" method="post" action="./Index1.php">
 			<input id="imgEdit" type="image" src=".\imagenes\Back01.png" alt="Smiley face">Atras
 		</form>
+		
+		<input type="submit" name = "login" value="Cuentas" style="width: 30%;" onclick="location.href=`./cuentas.php`;">
+		<input type="submit" name = "login" value="Tarjetas" style="width: 30%;" onclick="location.href=`./tarjetas.php`;">
+		
 		<form id="shop" name="shop" method="post" action="./tienda.php">
 			<input id="imgEdit2" type="image" src=".\imagenes\Tienda.png" alt="Smiley face">
 		</form>
@@ -23,13 +27,13 @@
 				<form action="" method="POST"> 
 					<table>
 						<tr>
-						<p>Aqui va la primera linea de movimientos realizada por ti como hijo</p>
+						<p>Ingreso de 300.000 euros en cuenta corriente</p>
 						</tr>
 						<tr>
-						<p>Aqui va la segunda linea de movimientos realizada por ti como hijo</p>
+						<p>Ingreso de 300.000 euros en cuenta corriente</p>
 						</tr>
 						<tr>
-						<p>Aqui va la tercera linea de movimientos realizada por ti como hijo</p>
+						<p>Adquisición de un chalet en la moraleja por valor de 600.000 euros</p>
 						</tr>
 					</table>
 				</form>
