@@ -1,6 +1,7 @@
 FROM php
 
-RUN apt-get update && apt-get install -y libpq-dev && docker-php-ext-install pdo pdo_pgsql php-odbc
+RUN apt-get update && apt-get install -y libpq-dev && docker-php-ext-install pdo pdo_pgsql 
+RUN docker-php-ext-install odbc
 
 WORKDIR /app
 EXPOSE 8080
