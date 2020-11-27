@@ -1,10 +1,13 @@
 FROM php
 
 RUN apt-get update && apt-get install -y libpq-dev && docker-php-ext-install pdo pdo_pgsql 
-RUN apt-get install unixodbc unixodbc-dev -y \
- && docker-php-ext-configure pdo_odbc --with-pdo-odbc=unixODBC,/usr \
- && docker-php-ext-install pdo_odbc
-RUN docker-php-ext-install odbc
+RUN apt-get update && apt-get install -y unixODBC-dev && rm -rf /var/lib/apt/lists/*
+RUN set -x \
+    && cd /usr/src/php/ext/odbc \
+    && phpize \
+    && sed -ri 's@^ *test +"\$PHP_.*" *= *"no" *&& *PHP_.*=yes *$@#&@g' configure \
+    && ./configure --with-unixODBC=shared,/usr \
+    && docker-php-ext-install odbc
 
 WORKDIR /app
 EXPOSE 8080
