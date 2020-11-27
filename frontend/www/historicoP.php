@@ -20,10 +20,10 @@
 				<form action="" method="POST"> 
 					<table>
 						<tr>
-						<p>Tu hijo ha realizado un ingredo en cuenta corriente de 300.000</p>
+						<p>Tu hijo ha realizado un ingreso en cuenta corriente de 300.000</p>
 						</tr>
 						<tr>
-						<p>Tu hijo ha realizado un ingredo en cuenta corriente de 300.000</p>
+						<p>Tu hijo ha realizado un ingreso en cuenta corriente de 300.000</p>
 						</tr>
 						<tr>
 						<p>¡Enhorabuena!, tu hijo ha adquirido un chalet en la Moraleja por valor de 600.000</p>
